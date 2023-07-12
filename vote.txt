@@ -1,0 +1,33 @@
+
+	public static void main(String[] args){
+		
+		Set<String> dictionary = new HashSet<>();
+	
+		try{
+
+			File file = new File("dictionary.txt");
+			Scanner input = new Scanner(file);
+			String line; 
+
+			while(input.hasNextLine()){
+
+				line = input.nextLine();
+				String words[] = line.split(" ");
+
+				for(int i = 0; i < words.length; i++) 
+					dictionary.add(i, words[i].trim());
+			}
+
+			String start = "toon";
+			String target = "poin";
+
+			int ed = findEditDistance(start, target, dictionary);
+ 
+			System.out.printf("Edit distance b/w %s and %s : %d" , start, target, ed); 
+		}
+		catch(Exception e){
+			System.out.println("Error occured while opening the file! ");
+		}
+
+		
+	}

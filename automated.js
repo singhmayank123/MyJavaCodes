@@ -1,0 +1,1 @@
+window.open("https://docs.google.com/spreadsheets/d/16-_6emfH-oseh8YxeZX_Ks69OLmlCS6KFHcgsbNsjzU/edit#gid=604495568", "_blank");

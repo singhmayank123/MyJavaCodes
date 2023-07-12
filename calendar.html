@@ -1,0 +1,72 @@
+<?php
+define("ADAY", (60*60*24));
+if (!checkdate($_POST[month], 1, $_POST[year])) {
+    $nowArray = getdate();
+    $month = $nowArray['mon'];
+    $year = $nowArray['year'];
+} 
+else {
+    $month = $_POST[month];
+    $year = $_POST[year];
+}
+$start = mktime (12, 0, 0, $month, 1, $year);
+$firstDayArray = getdate($start);
+?>
+<html>
+<head>
+<title><?php print "Calendar:
+ ".$firstDayArray['month']." ".$firstDayArray['year'] ?></title>
+<head>
+<body>
+<form method="post" action="<?php print "$_SERVER[PHP_SELF]"; ?>">
+<select name="month">
+<?php
+$months = Array("January", "February", "March", "April", "May",
+"June", "July", "August", "September", "October", "November", "December");
+for ($x=1; $x <= count($months); $x++) {
+    print "\t<option value=\"$x\"";
+    print ($x == $month)?" SELECTED":"";
+    print ">".$months[$x-1]."\n";
+}
+?>
+</select>
+<select name="year">
+<?php
+for ($x=1980; $x<2010; $x++) {
+     print "\t<option";
+    print ($x == $year)?" SELECTED":"";
+    print ">$x\n";
+}
+ ?>
+</select>
+<input type="submit" value="Go!">
+</form>
+<br>
+<?php
+ 46: $days = Array("Sunday", "Monday", "Tuesday", "Wednesday",
+ 47: "Thursday", "Friday", "Saturday");
+ 48: 
+ 49: print "<TABLE BORDER = 1 CELLPADDING=5>\n";
+ 50: foreach ($days as $day) {
+ 51:     print "\t<td><b>$day</b></td>\n";
+ 52: }
+ 53: for ($count=0; $count < (6*7); $count++) {
+ 54:     $dayArray = getdate($start);
+ 55:     if (($count % 7) == 0) {
+ 56:         if ($dayArray['mon'] != $month) {
+ 57:             break;
+ 58:         } else {
+ 59:             print "</tr><tr>\n";
+ 60:         }
+ 61:     }
+ 62:     if ($count < $firstDayArray['wday'] || $dayArray['mon'] != $month) {
+ 63:         print "\t<td><br></td>\n";
+ 64:     } else {
+ 65:         print "\t<td>".$dayArray['mday']." &nbsp;&nbsp; </td>\n";
+ 66:         $start += ADAY;
+ 67:     }
+ 68: }
+ 69: print "</tr></table>";
+ 70: ?>
+ 71: </body>
+ 72: </html>

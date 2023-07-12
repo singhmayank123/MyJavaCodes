@@ -1,0 +1,31 @@
+.div1, .div2{
+
+	display: flex;
+	justify-content: center;
+    width: 500px;
+    height: auto;
+    background-image: linear-gradient(#D3D3D3, white, gray);
+    border-style: outset;
+}
+  
+.first-txt {
+	padding-top: 25%;
+	font-family: Arial;
+	font-size: 40px;
+	color: #000080;
+	text-shadow: 2px 2px #000080;
+}
+
+.div1:hover{
+	/** change here the image link **/
+	background-image: url("load.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.div2:hover{
+	/** change here the image link **/
+	background-image: url("load.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
